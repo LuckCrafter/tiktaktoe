@@ -33,6 +33,13 @@ void print(Board const& board) {
 
 void turn(bool secondplayer, Board board) {
   int input;
+  int checks=0;
+  for (int i=0;i<9;++i) if (board(i%3,i/3)==0) ++checks;
+  if (checks==0){
+    print(board);
+    std::cout << "\nGame draw!\n";
+    return;
+  }
   print(board);
   std::cout << "\nPlayer "<<secondplayer+1<<", select feld: ";
   std::cin >> input;
